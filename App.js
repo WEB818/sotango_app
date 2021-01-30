@@ -10,7 +10,11 @@ import DJHighlight from "./app/components/DJHighlight";
 import colors from "./app/config/colors";
 import MainMap from "./app/components/MainMap";
 import Footer from "./app/components/Footer";
+import Screen from "./app/components/Screen";
+import Icon from "./app/components/Icon";
 import ProfileScreen from "./app/screens/ProfileScreen";
+import CheckInsScreen from "./app/screens/CheckInsScreen";
+import ListItem from "./app/components/ListItem";
 export default function App() {
   return (
     // <View style={styles.container}>

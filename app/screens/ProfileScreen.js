@@ -1,25 +1,105 @@
-import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-80;
+import React, { useState } from "react";
+import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+
+import Screen from "../components/Screen";
+import ListItem from "../components/ListItem";
+import ListItemSeparator from "../components/ListItemSeparator";
+import ListItemDeleteAction from "../components/ListItemDeleteAction";
+import ProfileItem from "../components/ProfileItem";
+import Icon from "../components/Icon";
 import colors from "../config/colors";
+
+const initialMessages = [
+  {
+    id: 1,
+    icon: require("../assets/dancers.png"),
+    title: "M1",
+  },
+  {
+    id: 2,
+    icon: require("../assets/dancers.png"),
+    title: "M2",
+  },
+];
+
+const profileItems = [
+  {
+    id: 1,
+    icon: {
+      name: "format-list-bulleted",
+      backgroundColor: colors.white,
+    },
+    count: 4,
+  },
+  {
+    id: 2,
+    icon: {
+      name: "email",
+      backgroundColor: colors.white,
+    },
+    count: 10,
+  },
+];
 function ProfileScreen(props) {
+  const [messages, setMessages] = useState(initialMessages);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleDelete = (message) => {
+    setMessages(messages.filter((m) => m.id !== message.id));
+  };
   return (
-    <View style={styles.checkInContainer}>
-      <View style={styles.checkIn}>
-        <Text>Hello</Text>
-      </View>
-    </View>
+    <Screen>
+      <FlatList
+        horizontal={true}
+        data={profileItems}
+        keyExtractor={(profileItem) => profileItem.id}
+        renderItem={({ item }) => (
+          <ProfileItem
+            count={item.count}
+            IconComponent={
+              <Icon
+                name={item.icon.name}
+                backgroundColor={item.icon.backgroundColor}
+              />
+            }
+          />
+        )}
+      />
+
+      {/* <View style={styles.container}>
+        <FlatList
+          data={messages}
+          keyExtractor={(message) => message.id.toString()}
+          renderItem={({ item }) => (
+            <ListItem
+              icon={item.icon}
+              title={item.title}
+              onPress={() => console.log("selected", item)}
+              renderRightActions={() => (
+                <ListItemDeleteAction onPress={() => handleDelete(item)} />
+              )}
+            />
+          )}
+          ItemSeparatorComponent={ListItemSeparator}
+          refreshing={refreshing}
+          onRefresh={() => {
+            setMessages([
+              {
+                id: 3,
+                icon: require("../assets/dancers.png"),
+                title: "M3",
+              },
+            ]);
+          }}
+        />
+      </View> */}
+    </Screen>
   );
 }
+
 const styles = StyleSheet.create({
-  checkInContainer: {
-    alignItems: "center",
-    backgroundColor: colors.primary,
-    justifyContent: "center",
-  },
-  checkIn: {
-    height: 40,
-    width: "70%",
+  container: {
+    // marginVertical: 20,
   },
 });
 export default ProfileScreen;

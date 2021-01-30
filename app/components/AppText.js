@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
   },
   text: {
-    fontSize: 22,
+    fontSize: 16,
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
   },
 });
