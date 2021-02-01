@@ -30,9 +30,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   icon: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 40,
+    height: 40,
   },
 });
 export default ListItem;

@@ -28,17 +28,20 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     width: 140,
+
     alignItems: "center",
   },
   info: {
     backgroundColor: colors.primary,
     width: 70,
+    height: 70,
     justifyContent: "center",
     alignItems: "center",
   },
   review: {
     backgroundColor: colors.secondary,
     width: 70,
+    height: 70,
     justifyContent: "center",
     alignItems: "center",
   },

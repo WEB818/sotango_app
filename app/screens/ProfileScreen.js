@@ -13,12 +13,12 @@ const initialMessages = [
   {
     id: 1,
     icon: require("../assets/dancers.png"),
-    title: "M1",
+    title: "Milonga LA",
   },
   {
     id: 2,
     icon: require("../assets/dancers.png"),
-    title: "M2",
+    title: "Milonga SF",
   },
 ];
 
@@ -26,16 +26,27 @@ const profileItems = [
   {
     id: 1,
     icon: {
-      name: "format-list-bulleted",
+      name: "account-group",
       backgroundColor: colors.white,
+      iconColor: colors.primary,
     },
     count: 4,
   },
   {
     id: 2,
     icon: {
-      name: "email",
+      name: "map-marker",
       backgroundColor: colors.white,
+      iconColor: colors.primary,
+    },
+    count: 10,
+  },
+  {
+    id: 3,
+    icon: {
+      name: "message-text",
+      backgroundColor: colors.white,
+      iconColor: colors.primary,
     },
     count: 10,
   },
@@ -48,7 +59,7 @@ function ProfileScreen(props) {
     setMessages(messages.filter((m) => m.id !== message.id));
   };
   return (
-    <Screen>
+    <Screen style={styles.screen}>
       <FlatList
         horizontal={true}
         data={profileItems}
@@ -60,13 +71,14 @@ function ProfileScreen(props) {
               <Icon
                 name={item.icon.name}
                 backgroundColor={item.icon.backgroundColor}
+                iconColor={item.icon.iconColor}
               />
             }
           />
         )}
       />
 
-      {/* <View style={styles.container}>
+      <View style={styles.container}>
         <FlatList
           data={messages}
           keyExtractor={(message) => message.id.toString()}
@@ -92,14 +104,18 @@ function ProfileScreen(props) {
             ]);
           }}
         />
-      </View> */}
+      </View>
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // marginVertical: 20,
+    marginVertical: 20,
+  },
+  screen: {
+    padding: 20,
+    backgroundColor: colors.light,
   },
 });
 export default ProfileScreen;

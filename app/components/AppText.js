@@ -1,22 +1,19 @@
 import React from "react";
-import { Text, StyleSheet, Platform } from "react-native";
-import colors from "../config/colors";
+import { Text, StyleSheet } from "react-native";
+
+import defaultStyles from "../config/styles";
 
 function AppHeader({ children, style }) {
   return <Text style={[styles.header, style]}>{children}</Text>;
 }
 
 function AppText({ children, style }) {
-  return <Text style={[styles.text, style]}>{children}</Text>;
+  return <Text style={[defaultStyles.text, style]}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({
   header: {
     fontSize: 52,
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-  },
-  text: {
-    fontSize: 16,
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
   },
 });

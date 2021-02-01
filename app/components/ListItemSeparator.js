@@ -8,8 +8,8 @@ function ListItemSeparator() {
 }
 const styles = StyleSheet.create({
   separator: {
-    width: "80%",
-    height: 3,
+    width: "100%",
+    height: 2,
     backgroundColor: colors.light,
   },
 });
