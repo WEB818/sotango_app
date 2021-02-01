@@ -1,59 +1,59 @@
 import React from "react";
-import {
-  Button,
-  Image,
-  ImageBackground,
-  StyleSheet,
-  View,
-  Text,
-} from "react-native";
-import { AppText, AppHeader } from "../components/AppText";
-import AppButton from "../components/AppButton";
+import { Image, StyleSheet } from "react-native";
+
+import * as Yup from "yup";
+
+import Screen from "../components/Screen";
+import { AppForm, AppFormField, SubmitButton } from "../components/forms";
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string().required().email().label("Email"),
+  password: Yup.string().required().min(4).label("Password"),
+});
 
 function LoginScreen(props) {
   return (
-    <ImageBackground
-      blurRadius={5}
-      style={styles.background}
-      source={require("../assets/dancefloor.png")}
-    >
-      <View style={styles.logoContainer}>
-        <Image
-          style={styles.logo}
-          source={require("../assets/dancers.png")}
-        ></Image>
-        <AppHeader>SoTango</AppHeader>
-      </View>
-      <View style={styles.buttonsContainer}>
-        <AppButton title="Log In" onPress={() => console.log("Tapped")} />
-        <AppButton
-          title="Register"
-          color="secondary"
-          onPress={() => console.log("Tapped")}
+    <Screen style={styles.container}>
+      <Image style={styles.logo} source={require("../assets/dancers.png")} />
+      <AppForm
+        initialValues={{ email: "", password: "" }}
+        onSubmit={(values) => console.log(values)}
+        validationSchema={validationSchema}
+      >
+        <AppFormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="email"
+          keyboardType="email-address"
+          name="email"
+          placeholder="Email"
+          textContentType="emailAddress"
         />
-      </View>
-    </ImageBackground>
+
+        <AppFormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="lock"
+          name="password"
+          placeholder="Password"
+          secureTextEntry
+          textContentType="password"
+        />
+        <SubmitButton title="Login" />
+      </AppForm>
+    </Screen>
   );
 }
-
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
-  buttonsContainer: {
-    padding: 20,
-    width: "100%",
+  container: {
+    padding: 10,
   },
   logo: {
-    width: 200,
-    height: 200,
-  },
-  logoContainer: {
-    position: "absolute",
-    top: 70,
-    alignItems: "center",
+    width: 80,
+    height: 80,
+    alignSelf: "center",
+    marginTop: 50,
+    marginBottom: 20,
   },
 });
 export default LoginScreen;
