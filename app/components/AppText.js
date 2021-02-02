@@ -14,7 +14,7 @@ function AppText({ children, style }) {
 const styles = StyleSheet.create({
   header: {
     fontSize: 52,
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+    fontFamily: Platform.OS === "android" ? "Roboto" : "Menlo-BoldItalic",
   },
 });
 export { AppText, AppHeader };
