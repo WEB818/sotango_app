@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 function ListItemDeleteAction({ onPress }) {
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableWithoutFeedback>
       <View style={styles.container}>
         <View style={styles.info}>
           <MaterialCommunityIcons
@@ -15,9 +15,10 @@ function ListItemDeleteAction({ onPress }) {
         </View>
         <View style={styles.review}>
           <MaterialCommunityIcons
-            name="comment-edit-outline"
+            name="map-marker-remove-outline"
             size={35}
             color={colors.white}
+            onPress={onPress}
           />
         </View>
       </View>

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import {
   Button,
-  StyleSheet,
-  TextInput,
-  View,
-  TouchableWithoutFeedback,
-  Modal,
   FlatList,
+  Modal,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Screen from "./Screen";
 import defaultStyles from "../config/styles";
-import { AppText } from "./AppText";
+import { Text } from "./Text";
 import PickerItem from "./PickerItem";
-function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
+
+function Picker({ icon, items, onSelectItem, placeholder, selectedItem }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -29,9 +29,9 @@ function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
             />
           )}
 
-          <AppText style={styles.text}>
+          <Text style={styles.text}>
             {selectedItem ? selectedItem.label : placeholder}
-          </AppText>
+          </Text>
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-export default AppPicker;
+export default Picker;

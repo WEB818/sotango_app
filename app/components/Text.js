@@ -3,7 +3,7 @@ import { Text, StyleSheet } from "react-native";
 
 import defaultStyles from "../config/styles";
 
-function AppHeader({ children, style }) {
+function Header({ children, style }) {
   return <Text style={[styles.header, style]}>{children}</Text>;
 }
 
@@ -13,8 +13,8 @@ function AppText({ children, style }) {
 
 const styles = StyleSheet.create({
   header: {
-    fontSize: 52,
+    fontSize: 28,
     fontFamily: Platform.OS === "android" ? "Roboto" : "Menlo-BoldItalic",
   },
 });
-export { AppText, AppHeader };
+export { AppText, Header };

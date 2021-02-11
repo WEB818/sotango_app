@@ -2,18 +2,27 @@ import React from "react";
 import { Image, StyleSheet, TouchableHighlight, View } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
-import { AppText } from "./AppText";
+import { AppText } from "./Text";
 import colors from "../config/colors";
 
-function ListItem({ icon, IconComponent, title, onPress, renderRightActions }) {
+function ListItem({
+  icon,
+  IconComponent,
+  location,
+  title,
+  onPress,
+  renderRightActions,
+  style,
+}) {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
-        <View style={styles.container}>
+        <View style={[styles.container, style]}>
           {IconComponent}
           {icon && <Image style={styles.icon} source={icon} />}
           <View style={styles.detailsContainer}>
             <AppText>{title}</AppText>
+            {location && <AppText>{location}</AppText>}
           </View>
         </View>
       </TouchableHighlight>
@@ -22,16 +31,17 @@ function ListItem({ icon, IconComponent, title, onPress, renderRightActions }) {
 }
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.white,
     flexDirection: "row",
     padding: 15,
-    backgroundColor: colors.white,
   },
   detailsContainer: {
+    justifyContent: "center",
     marginLeft: 10,
   },
   icon: {
-    width: 40,
     height: 40,
+    width: 40,
   },
 });
 export default ListItem;

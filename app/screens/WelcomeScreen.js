@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  Button,
-  Image,
-  ImageBackground,
-  StyleSheet,
-  View,
-  Text,
-} from "react-native";
-import { AppText, AppHeader } from "../components/AppText";
-import AppButton from "../components/AppButton";
+import { Image, ImageBackground, StyleSheet, View } from "react-native";
+import { Header } from "../components/Text";
+import Button from "../components/Button";
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       blurRadius={5}
@@ -22,14 +15,14 @@ function WelcomeScreen(props) {
           style={styles.logo}
           source={require("../assets/dancers.png")}
         ></Image>
-        <AppHeader>SoTango</AppHeader>
+        <Header>SoTango</Header>
       </View>
       <View style={styles.buttonsContainer}>
-        <AppButton title="Log In" onPress={() => console.log("Tapped")} />
-        <AppButton
+        <Button title="Log In" onPress={() => navigation.navigate("Login")} />
+        <Button
           title="Register"
           color="secondary"
-          onPress={() => console.log("Tapped")}
+          onPress={() => navigation.navigate("Register")}
         />
       </View>
     </ImageBackground>
